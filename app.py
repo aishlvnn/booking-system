@@ -50,12 +50,12 @@ def reserve():
 @app.route('/bookings')
 def view_bookings():
     with sqlite3.connect('database.db') as conn:
-        conn.row_factory = sqlite3.Row  # Fetch results as dictionaries
+        conn.row_factory = sqlite3.Row  
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM bookings")
         bookings = cursor.fetchall()
 
-    print([dict(row) for row in bookings])  # Debugging: Print bookings as dictionaries
+    print([dict(row) for row in bookings])  
 
     return render_template('bookings.html', bookings=bookings)
 
